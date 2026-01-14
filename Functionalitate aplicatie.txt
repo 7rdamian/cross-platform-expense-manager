@@ -1,0 +1,13 @@
+Aplicația permite utilizatorului să:
+
+- adauge cheltuieli personale
+
+- vizualizeze lista de cheltuieli
+
+- editeze și șteargă cheltuieli
+
+- vadă totalul cheltuielilor
+
+- filtreze cheltuielile
+
+- salveze datele local

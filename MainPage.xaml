@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project2MIP.MainPage"
+             x:Name="ThisPage"
+             Title="Gestionare Cheltuieli"
+             BackgroundColor="White">
+
+    <StackLayout Padding="20" Spacing="15">
+
+        <!-- Entry pentru suma -->
+        <Entry Placeholder="Suma"
+               Keyboard="Numeric"
+               Text="{Binding Amount, Mode=TwoWay}"
+               TextColor="Black"/>
+
+        <!-- Entry pentru descriere -->
+        <Entry Placeholder="Descriere"
+               Text="{Binding Description, Mode=TwoWay}" 
+               TextColor="Black"/>
+
+        <!-- DatePicker pentru data cheltuielii -->
+        <DatePicker Date="{Binding Date, Mode=TwoWay}" />
+
+        <!-- Buton Adauga -->
+        <Button Text="Adaugă Cheltuială"
+                Command="{Binding AddExpenseCommand}" />
+
+        <Button Text="Salvează modificări dupa editare"
+                Command="{Binding UpdateExpenseCommand}"
+                TextColor="Black"
+                CornerRadius="5" />
+
+
+        <!-- Total cheltuieli -->
+        <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+
+
+        <Entry Placeholder="Caută cheltuială..."
+                            Text="{Binding SearchText, Mode=TwoWay}"
+                            TextColor="Black"
+                            PlaceholderColor="Gray"
+                            Margin="0,0,0,10" />
+
+        
+        <!-- Lista cheltuieli -->
+        <CollectionView ItemsSource="{Binding Expenses}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedExpense, Mode=TwoWay}">
+
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,5"
+                           BorderColor="LightGray"
+                           CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Text cheltuiala -->
+                            <StackLayout>
+                                <Label Text="{Binding Description}" FontAttributes="Bold" />
+                                <Label Text="{Binding Amount, StringFormat='{0:C}'}" />
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Small" TextColor="Gray" />
+                            </StackLayout>
+
+                            <!-- Buton stergere -->
+                            <Button Text="Șterge"
+                                    Grid.Column="1"
+                                    Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.DeleteExpenseCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    CornerRadius="5" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </StackLayout>
+
+</ContentPage>
