@@ -23,8 +23,7 @@ A multi-platform expense management application built using **.NET MAUI** (Multi
    git clone https://github.com/yourusername/expense-tracker-maui.git
    ```
 2. Open the Project2MIP.sln solution file in Visual Studio (ensure the .NET MAUI workload is installed).
-3. Select your target framework from the debug dropdown (e.g., Windows Machine, Android Emulator, or iOS Simulator).
-4. Build and run the application.
+3. Build and run the application.
 
 ## What I Learned
 This project introduced me to cross-platform development using .NET MAUI. I learned how to structure an application using the MVVM design pattern, work in XAML, and handle platform-specific configurations while sharing over 90% of the business logic across multiple operating systems.
