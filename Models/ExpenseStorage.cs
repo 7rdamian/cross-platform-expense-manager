@@ -36,7 +36,6 @@ namespace Project2MIP.Services
             }
             catch
             {
-                // Poți loga eroarea dacă vrei
             }
         }
     }
